@@ -5,6 +5,7 @@ import pandas as pd
 from prophet import Prophet
 import os
 import matplotlib.font_manager as fm
+import numpy as np
 
 def predictType(total_df):
     total_df['CTRT_DAY'] = pd.to_datetime(total_df['CTRT_DAY'], format="%Y-%m-%d")
@@ -22,7 +23,7 @@ def predictType(total_df):
         fm.fontManager.addfont(font_file)
     fm._load_fontmanager(try_read_cache=False)
     fontNames = [f.name for f in fm.fontManager.ttflist]
-    fontname = st.selectbox("폰트 선택", unique(fontNames))
+    fontname = st.selectbox("폰트 선택", np.unique(fontNames))
     plt.rc('font', family=fontname)
 
 
