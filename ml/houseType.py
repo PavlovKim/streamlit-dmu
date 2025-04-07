@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 from prophet import Prophet
+import os
 import matplotlib.font_manager as fm
 
 def predictType(total_df):
