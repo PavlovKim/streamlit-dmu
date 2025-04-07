@@ -22,6 +22,7 @@ def predictType(total_df):
         fm.fontManager.addfont(font_file)
     fm._load_fontmanager(try_read_cache=False)
     fontNames = [f.name for f in fm.fontManager.ttflist]
+    print(fontNames)
     fontname = st.selectbox("폰트 선택", sorted(set(fontNames)))
     plt.rc('font', family=fontname)
 
