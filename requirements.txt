@@ -1,5 +1,5 @@
-holidays==0.24
-prophet==1.1.2
+holidays==0.58
+prophet==1.1.6
 sktime
 pmdarima
 pandas
