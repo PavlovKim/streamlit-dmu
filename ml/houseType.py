@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 from prophet import Prophet
+import matplotlib.font_manager as fm
 
 def predictType(total_df):
     total_df['CTRT_DAY'] = pd.to_datetime(total_df['CTRT_DAY'], format="%Y-%m-%d")
@@ -13,6 +14,16 @@ def predictType(total_df):
     # 사용자 입력: 예측 기간
     periods = int(st.number_input("향후 예측 기간을 지정하세요 (1~30일)"
                                   , min_value=1, max_value=30, step=1))
+
+    font_dirs = [os.getcwd() + '/font']
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file)
+    fm._load_fontmanager(try_read_cache=False)
+    fontNames = [f.nameforfinfm.fontManager.ttflist]
+    fontname = st.selectbox("폰트 선택", unique(fontNames))
+    plt.rc('font', family=fontname)
+
 
     # 그래프 그리기
     fig = predict_plot(total_df, types, periods)
