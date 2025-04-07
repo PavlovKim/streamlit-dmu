@@ -16,7 +16,7 @@ def predictType(total_df):
     periods = int(st.number_input("향후 예측 기간을 지정하세요 (1~30일)"
                                   , min_value=1, max_value=30, step=1))
 
-    font_dirs = [os.getcwd() + '/myfont']
+    font_dirs = [os.getcwd() + '/Nanum_Gothic']
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
     for font_file in font_files:
         fm.fontManager.addfont(font_file)
