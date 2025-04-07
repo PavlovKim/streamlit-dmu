@@ -20,12 +20,10 @@ def predictType(total_df):
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
     for font_file in font_files:
         fm.fontManager.addfont(font_file)
-    fm._load_fontmanager(try_read_cache=False)
-    fontNames = [f.name for f in fm.fontManager.ttflist]
-    print(fontNames)
-    fontname = st.selectbox("폰트 선택", sorted(set(fontNames)))
-    plt.rc('font', family=fontname)
 
+    font_names = sorted(set([f.name for f in fm.fontManager.ttflist]))
+    selected_font = st.selectbox("폰트 선택", font_names)
+    plt.rc('font', family=selected_font)
 
     # 그래프 그리기
     fig = predict_plot(total_df, types, periods)
